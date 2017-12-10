@@ -1,0 +1,11 @@
+{
+  "name": "temp-and-humidity-raspberrypi",
+  "description": "",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::340053764926:role/temp-and-humidity-raspberrypi_lambda_function",
+  "environment": {
+    "queueUrl": "https://sqs.eu-west-1.amazonaws.com/340053764926/temp-and-humidity.fifo"
+  },
+  "handler": "index.handler"
+}
