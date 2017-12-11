@@ -101,7 +101,7 @@ ENV/
 .mypy_cache/
 
 # sensor data files
-sensor-values/*
+csv/*
 
 # npm
 node_modules

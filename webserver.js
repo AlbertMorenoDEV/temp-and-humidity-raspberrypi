@@ -12,7 +12,7 @@ var fs         = require('fs');
 var glob       = require("glob");
 
 var port                   = 9999; //to listen on ports < 1024 the script must run with root privileges
-var sensorFilesBasePath    = "sensor-values/";
+var sensorFilesBasePath    = "csv/";
 var histSensorFilesPaths   = glob.sync(sensorFilesBasePath + "@(temperature|humidity)_*_log_*.csv");
 var latestSensorFilesPaths = glob.sync(sensorFilesBasePath + "@(temperature|humidity)_*_latest_value.csv");
 var valuesFilenameRegex    = /\b(temperature|humidity)_([^_]*)_(log|latest_value)_?(\d{4})?/;

@@ -11,11 +11,12 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 sensor                       = Adafruit_DHT.AM2302 #DHT11/DHT22/AM2302
 pin                          = 4
-sensor_name                  = "living-room"
-hist_temperature_file_path   = "sensor-values/temperature_" + sensor_name + "_log_" + str(date.today().year) + ".csv"
-latest_temperature_file_path = "sensor-values/temperature_" + sensor_name + "_latest_value.csv"
-hist_humidity_file_path      = "sensor-values/humidity_" + sensor_name + "_log_" + str(date.today().year) + ".csv"
-latest_humidity_file_path    = "sensor-values/humidity_" + sensor_name + "_latest_value.csv"
+sensor_name                  = "pis_barcelona"
+csv_folder                   = "csv"
+hist_temperature_file_path   = csv_folder + "/temperature_" + sensor_name + "_log_" + str(date.today().year) + ".csv"
+latest_temperature_file_path = csv_folder +"/temperature_" + sensor_name + "_latest_value.csv"
+hist_humidity_file_path      = csv_folder +"/humidity_" + sensor_name + "_log_" + str(date.today().year) + ".csv"
+latest_humidity_file_path    = csv_folder +"/humidity_" + sensor_name + "_latest_value.csv"
 csv_header_temperature       = "timestamp,temperature_in_celsius\n"
 csv_header_humidity          = "timestamp,relative_humidity\n"
 csv_entry_format             = "{:%Y-%m-%d %H:%M:%S},{:0.1f}\n"
@@ -69,7 +70,7 @@ try:
       latest_humidity, latest_temperature = hum, temp
       latest_value_datetime = datetime.today()
       write_latest_value()
-    time.sleep(1)
+    time.sleep(60)
 except (KeyboardInterrupt, SystemExit):
   scheduler.shutdown()
 
