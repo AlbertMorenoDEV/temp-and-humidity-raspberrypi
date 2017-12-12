@@ -4,7 +4,7 @@ from datetime import datetime, date
 
 sensor                       = Adafruit_DHT.AM2302 #DHT11/DHT22/AM2302
 pin                          = 4
-sensor_name                  = "living-room"
+sensor_name                  = os.getenv('SENSOR_NAME', 'pi')
 csv_folder                   = "csv"
 hist_temperature_file_path   = csv_folder + "/temperature_" + sensor_name + "_log_" + str(date.today().year) + ".csv"
 latest_temperature_file_path = csv_folder + "/temperature_" + sensor_name + "_latest_value.csv"

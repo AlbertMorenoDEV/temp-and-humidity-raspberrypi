@@ -4,7 +4,7 @@ from datetime import datetime, date
 
 sensor                       = Adafruit_DHT.AM2302 #DHT11/DHT22/AM2302
 pin                          = 4
-sensor_name                  = "living-room"
+sensor_name                  = os.getenv('SENSOR_NAME', 'pi')
 entry_format                 = "{:%Y-%m-%d %H:%M:%S},{:0.1f}\n"
 rabbitmq_host                = "localhost"
 
@@ -12,6 +12,8 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(rabbitmq_host))
 channel = connection.channel()
 channel.exchange_declare(exchange='temp_and_humidity',
                          exchange_type='fanout')
+
+print(' [*] Waiting for sensor ' + sensor_name + ' values. To exit press CTRL+C')
 
 while True:
   hum, temp = Adafruit_DHT.read_retry(sensor, pin)
