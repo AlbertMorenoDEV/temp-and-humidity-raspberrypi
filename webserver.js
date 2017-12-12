@@ -33,7 +33,7 @@ function buildResultRec(resultAcc, filesPaths, fromTs, toTs, expressRes) {
   }
   var filePath = filesPaths.pop();
   var matches  = filePath.match(valuesFilenameRegex);
-  if (matches.length !== 5) { throw "filepath '" + filePath + "' is not in the expected format"; }
+  if (!matches || matches.length !== 5) { throw "filepath '" + filePath + "' is not in the expected format"; }
   var sensorKind = matches[1];
   var sensorName = matches[2];
   var dataType   = matches[3];
