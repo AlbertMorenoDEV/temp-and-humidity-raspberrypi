@@ -8,10 +8,10 @@ const MAX_HUMIDITY = parseFloat(70);
 const MIN_HUMIDITY = parseFloat(20);
 
 function sendEmail(sensor_name, datetime, temperature, humidity, alerts) {
-    const body = "Sensor: " + sensor_name + "<br>"
-        + "Date Time: " + datetime + "<br>"
-        + "Temperature: " + temperature + "<br>"
-        + "Humidity: " + humidity + "<br>"
+    const body = "Sensor: " + sensor_name + ". "
+        + "Date Time: " + datetime + ". "
+        + "Temperature: " + temperature + ". "
+        + "Humidity: " + humidity + ". "
         + "Alerts: " + alerts.join(", ");
         
     console.log(body);
