@@ -22,6 +22,15 @@ stdout_logfile = /var/log/supervisor/temp_and_humidity_csv_updater.log
 stderr_logfile = /var/log/supervisor/temp_and_humidity_csv_updater_err.log
 environment = SENSOR_NAME="pis-barcelona"
 
+[program:temp_and_humidity_sns_publisher]
+command = /usr/bin/python sns_publisher.py
+directory = /home/pi/Projects/temp-and-humidity
+user = pi
+autostart = true
+autorestart = true
+stdout_logfile = /var/log/supervisor/temp_and_humidity_sns_publisher.log
+stderr_logfile = /var/log/supervisor/temp_and_humidity_sns_publisher_err.log
+
 [program:temp_and_humidity_webserver]
 command = /usr/bin/node webserver.js
 directory = /home/pi/Projects/temp-and-humidity
